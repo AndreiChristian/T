@@ -1,0 +1,31 @@
+type ProductCategory {
+  categoryID:ID
+  name:String
+  isAvailable:Boolean
+  products:[Product]
+}
+
+type Product{
+  productID:ID
+  categoryID:ID
+  productCategory: ProductCategory
+  name:String
+  description:String
+  price:Float
+  isAvailable:Boolean
+}
+
+type Mutation{
+  addProduct(name:String,isAvailable:Boolean,categoryID:ID,description:String,price:Float):Product
+  addProductCategory(name:String,isAvailable:Boolean,categoryID:ID):ProductCategory
+}
+
+type Query {
+  productCategory(id:ID!): ProductCategory
+  productCategories: [ProductCategory!]
+
+  product(id:ID!):Product
+  products:[Product!]
+
+}
+

@@ -2,25 +2,14 @@ type ProductCategory {
   categoryID:ID
   name:String
   isAvailable:Boolean
-  products:[Product]
-}
-
-type Product{
-  productID:ID
-  categoryID:ID
-  productCategory: ProductCategory
-  name:String
-  description:String
-  price:Float
-  isAvailable:Boolean
 }
 
 type Mutation{
-  addProduct(name:String):Product
+  addProductCategory(name:String,isAvailable:Boolean,categoryID:ID):ProductCategory
 }
 
 type Query {
+  productCategory(id:ID!): ProductCategory
   productCategories: [ProductCategory!]
-  products:[Product!]
 }
 
