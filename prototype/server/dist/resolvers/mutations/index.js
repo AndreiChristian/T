@@ -7,7 +7,7 @@ exports.Mutation = {
         console.log(args);
         const length = db_1.dummyProducts.length;
         db_1.dummyProducts.push({
-            isAvailable: args.isAvailable,
+            isAvailable: args.isAvailable || false,
             name: args.name,
             description: args.description,
             categoryID: args.categoryID,

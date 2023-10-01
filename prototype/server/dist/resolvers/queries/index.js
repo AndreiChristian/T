@@ -1,14 +1,22 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-exports.Query = void 0;
+exports.QueryResolver = void 0;
 const db_1 = require("../../db");
-exports.Query = {
-    productCategories: () => db_1.dummyProductCategories,
-    productCategory: (_parent, args, _contextValue, _info) => {
-        return db_1.dummyProductCategories.find(p => p.categoryID === args.id);
+exports.QueryResolver = {
+    productCategories: () => {
+        return db_1.dummyProductCategories;
+    },
+    productCategory: {
+        resolve(parent, args, context, info) {
+            return {};
+        }
     },
     products: () => db_1.dummyProducts,
-    product: (_parent, args, _contextValue, _info) => {
-        return db_1.dummyProducts.find(p => p.categoryID === args.id);
-    },
+    product: {
+        resolve(parent, args, context, info) {
+            return {
+                productID: "2"
+            };
+        }
+    }
 };
